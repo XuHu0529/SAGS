@@ -12,5 +12,9 @@
 ## Segmentation Results
 
 ## Boundary-Enhanced Segmentation
+Gaussian Decomposition (GD) is proposed to address the issue of roughness boundaries of 3D segmented objects, which results from the non-negligible spatial sizes of 3D Gaussian located at the boundary.
+![boundary](imgs/boundary_enhanced.png)
 
 ## More Applications
+After segmentation, we can directly apply to scene editing tasks, such as object removal, translation, and rotation, and extract collision meshes.
+![applications](imgs/applications.png)
