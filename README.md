@@ -17,14 +17,19 @@ cd SAGS
 ```
 Install the dependencies of 3D-GS:
 ```
-cd gaussiansplatting
+cd gaussiansplatting/submodules
 
-pip install submodules/diff-gaussian-rasterization
-pip install submodules/simple-knn
+# a modified gaussian splatting (+ depth, alpha rendering)
+git clone --recursive https://github.com/ashawkey/diff-gaussian-rasterization
+pip install ./diff-gaussian-rasterization
+
+pip install ./simple-knn
 ```
 Install SAM and Grounding-DINO：
 ```
 # Installing SAM
+cd ../
+
 mkdir dependencies; cd dependencies 
 mkdir sam_ckpt; cd sam_ckpt
 wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
