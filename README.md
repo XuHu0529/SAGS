@@ -9,6 +9,52 @@
 ![Our Pipeline](imgs/pipeline.png)
 (a) Given a set of clicked points on the 1st rendered view, we utilize SAM to generate masks for corresponding objects under every view automatically; (b) For every view, Gaussian Decomposition is performed to address the issue of boundary roughness and then label propagation is implemented to assign binary labels to each 3D Gaussian; (c) Finally, with assigned 3D labels from all views, we adopt a simple yet effective voting strategy to determine the segmented Gaussians.
 
+## Installation
+Clone the repository
+```
+git clone https://github.com/XuHu0529/SAGS.git
+cd SAGS
+```
+Install the dependencies of 3D-GS:
+```
+cd gaussiansplatting
+
+pip install submodules/diff-gaussian-rasterization
+pip install submodules/simple-knn
+```
+Install SAM and Grounding-DINO：
+```
+# Installing SAM
+mkdir dependencies; cd dependencies 
+mkdir sam_ckpt; cd sam_ckpt
+wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+git clone git@github.com:facebookresearch/segment-anything.git 
+cd segment-anything; pip install -e .
+
+# Installing Grounding-DINO
+git clone https://github.com/IDEA-Research/GroundingDINO.git
+cd GroundingDINO/; pip install -e .
+mkdir weights; cd weights
+wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
+```
+
+## Usage
+- Train 3D-GS
+  
+  We inherit all attributes from the original 3DGS, and more information about training the Gaussians can be found in their repo.
+  ```
+  python train.py -s <path to COLMAP or NeRF dataset> -m <path to saving trained model>
+  ```
+- Interactive Segmentation
+  
+  We use the jupyter notebook to perform segmentation. Please refer to `segmentation.ipynb` for instructions.
+
+Some tips:
+
+## TODO
+- [ ] Refine the code implementation of Gaussian Decomposition. The current codes are a little time-consuming.
+- [ ] A GUI for interactive usage.
+
 ## Segmentation Results
 
 ## Boundary-Enhanced Segmentation
