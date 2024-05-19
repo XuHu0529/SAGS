@@ -50,6 +50,9 @@ wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alp
   We use the jupyter notebook to perform segmentation. Please refer to `segmentation.ipynb` for instructions.
 
 Some tips:
+- `--gd_interval`
+
+  Not all views need to decompose Gaussians. For common scenes, 4 or 5 decompositions are enough.
 
 ## TODO
 - [ ] Refine the code implementation of Gaussian Decomposition. The current codes are a little time-consuming.
